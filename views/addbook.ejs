@@ -1,0 +1,38 @@
+<%- include('parts/top.ejs')%> <br /><br /><br /><br /><br /><br /><br />
+<div class="container">
+  <form method="POST" action="/addbook" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label>Book Title</label>
+      <input type="text" class="form-control" name="title"/>
+    </div>
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea type="text" class="form-control" name="description"></textarea>
+    </div>
+    <div class="mb-3">
+      <label>Author</label>
+      <input type="text" class="form-control" name="author"/>
+    </div>
+    <div class="mb-3">
+      <label>Price</label>
+      <input type="number" class="form-control" name="price"/>
+    </div>
+    <div class="mb-3">
+      <label>Image</label>
+      <input type="file" accept=".jpg,.png,.jpeg" class="form-control" name="image"/>
+    </div>
+    <% if(Smessage){ %>
+    <div class="alert alert-success">
+      <%=Smessage%>
+    </div>
+    <% }%>
+    <% if(Emessage){ %>
+    <div class="alert alert-success">
+      <%=Emessage%>
+    </div>
+    <% }%>
+    <button type="submit" class="btn btn-primary">Add Book</button>
+  </form>
+</div>
+
+<%-include('parts/bottom.ejs')%>

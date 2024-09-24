@@ -1,0 +1,41 @@
+<%- include('parts/top.ejs')%> <br /><br /><br /><br />
+<div class="container">
+  <form method="POST" action="/mybooks/update" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label>Book Title</label>
+      <input type="text" class="form-control" name="title" value="<%= bookUpdate.title%>"/>
+    </div>
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea type="text" class="form-control" name="description" ><%= bookUpdate.description%></textarea>
+    </div>
+    <input type="hidden" name="bookId" value="<%= bookUpdate._id%>">
+    <div class="mb-3">
+      <label>Author</label>
+      <input type="text" class="form-control" name="author" value="<%= bookUpdate.author%>"/>
+    </div>
+    <div class="mb-3">
+      <label>Price</label>
+      <input type="number" class="form-control" name="price" value="<%= bookUpdate.price%>"/>
+    </div>
+    <img src="/uploads/<%= bookUpdate.image%>" height="120px"><br><br>
+    <input type="hidden" name="oldImage" value="<%= bookUpdate.image%>">
+    <div class="mb-3">
+      <label>Image</label>
+      <input type="file" accept=".jpg,.png,.jpeg" class="form-control" name="image"/>
+    </div>
+    <% if(Smessage){ %>
+      <div class="alert alert-success">
+        <%=Smessage%>
+      </div>
+      <% }%>
+      <% if(Emessage){ %>
+      <div class="alert alert-success">
+        <%=Emessage%>
+      </div>
+      <% }%>
+    <button type="submit" class="btn btn-primary">Update Book</button>
+  </form>
+</div>
+
+<%-include('parts/bottom.ejs')%>

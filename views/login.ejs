@@ -1,0 +1,25 @@
+<%- include('parts/top.ejs')%>
+
+<br><br><br><br><br><br><br>
+<div class="container">
+    <form method="POST" action="/login">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="email" id="form1Example1" name="email" class="form-control" placeholder="Email address"/>
+        </div>
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" id="form1Example2" name="password" class="form-control" placeholder="Password"/>
+        </div>
+        <% if (message) {%>
+        <div class="alert alert-danger">
+          <%=message%>
+        </div>
+        <% } %>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        
+        <a class="nav-link" href="/register">Register</a>
+      </form>
+</div>
+<%-include('parts/bottom.ejs')%>
