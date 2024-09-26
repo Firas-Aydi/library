@@ -17,7 +17,8 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 var store = new MongoDBStore({
-  uri: "mongodb://0.0.0.0:27017/library",
+  uri: process.env.MONGO_URI,
+  // uri: "mongodb://0.0.0.0:27017/library",
   collection: "sessions",
 });
 const mongoose = require("mongoose");
