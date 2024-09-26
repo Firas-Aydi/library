@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+require('dotenv').config();
 
 var schemaAuth = mongoose.Schema({
   name: String,
@@ -8,7 +9,8 @@ var schemaAuth = mongoose.Schema({
 });
 
 var User = mongoose.model("user", schemaAuth);
-var url = "mongodb://0.0.0.0:27017/library";
+// var url = "mongodb://0.0.0.0:27017/library";
+var url = process.env.MONGODB_URI;
 
 exports.registerFunctionModel = (name, email, password) => {
   // test email if exist(true go to login) (false add new user)

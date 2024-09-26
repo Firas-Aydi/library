@@ -9,6 +9,7 @@ const flash = require("connect-flash");
 const routeMybooks=require('./routers/mybooks.route')
 const routeContact=require('./routers/contact.route')
 const routeAbout=require('./routers/about.route')
+require('dotenv').config();
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 var store = new MongoDBStore({
-  uri: process.env.MONGO_URI,
+  uri: process.env.MONGODB_URI,
   // uri: "mongodb://0.0.0.0:27017/library",
   collection: "sessions",
 });

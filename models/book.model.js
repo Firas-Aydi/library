@@ -1,5 +1,6 @@
 const req = require("express/lib/request");
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 var schemaBook = mongoose.Schema({
   userId: String,
@@ -11,20 +12,22 @@ var schemaBook = mongoose.Schema({
 });
 
 var Book = mongoose.model("book", schemaBook);
-var url = "mongodb://0.0.0.0:27017/library";
+// var url = "mongodb://0.0.0.0:27017/library";
+var url = process.env.MONGODB_URI;
 
 exports.getThreeBooks = () => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
+        console.log('MongoDB connected successfully')
         return Book.find({}).limit(3);
       })
       .then((books) => {
         mongoose.disconnect();
         resolve(books);
       })
-      .catch((err) => reject(err));
+      .catch((err) => reject('MongoDB connection error:',err));
   });
 };
 
