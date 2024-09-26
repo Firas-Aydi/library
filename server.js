@@ -51,4 +51,10 @@ app.get("/tables", (req, res, next) => {
   res.render("tables", { verifUser: req.session.userId });
 });
 
-app.listen(3000, () => console.log("server run on port 3000"));
+// Utiliser la variable d'environnement `PORT` fournie par Render
+const port = process.env.PORT || 3000;
+
+// Lier l'application à l'adresse '0.0.0.0' et au port fourni
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running on port ${port}`);
+});
